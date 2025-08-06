@@ -1,0 +1,33 @@
+# Bytecode files
+__pycache__/
+*.py[cod]
+
+# SQLite database backups or temporary copies
+*.sqlite3-journal
+*.db-journal
+*.sqlite3.bak
+*.db.bak
+
+# Compiled files and build artifacts
+*.exe
+*.spec
+build/
+dist/
+*.egg-info/
+
+# Environment files
+.env
+.venv/
+venv/
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
