@@ -31,3 +31,7 @@ Thumbs.db
 
 # Log files
 *.log
+
+# Custom Folders
+data/
+.vscode/
