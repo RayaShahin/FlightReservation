@@ -17,6 +17,13 @@ def add_flight(flight_number, departure, arrival, date, time, price):
         return c.lastrowid
     
 # deleting a flight
+def remove_flight(flight_id):
+    with sqlite3.connect(db_path) as conn:
+        c = conn.cursor()
+        c.execute("DELETE FROM flights WHERE flight_id = ?", (flight_id,))
+        conn.commit()
+        conn.close()
+        print(f"Flight with ID {flight_id} removed successfully!") 
 
 
 # retrieving all flights  
