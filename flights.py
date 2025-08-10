@@ -37,3 +37,26 @@ def get_flight_by_id(flight_id):
         row = c.fetchone()
         conn.close()
         return dict(row) if row else None
+    
+# searching flights
+def get_flights(departure, arrival, date):
+    with sqlite3.connect(db_path) as conn:
+        c = conn.cursor()
+        query = "SELECT * FROM flights WHERE 1=1" # add conditions later
+        condition = []
+        
+        # conditions
+        if departure:
+            query += "AND departure LIKE ?"
+            condition.append(f"%{departure}%")
+        if arrival:
+            query += "AND arrival LIKE ?"
+            condition.append(f"%{arrival}%")
+        if date:
+            query += "AND date = ?"
+            condition.append(date)
+            
+        c.execute(query, condition)
+        rows = c.fetchall()
+        conn.close()
+        return rows
