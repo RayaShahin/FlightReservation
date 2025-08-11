@@ -10,8 +10,9 @@ def init_db():
         # create flights table
         c.execute("""
                   CREATE TABLE IF NOT EXISTS flights(
-                      flight_id INTEGER PRIMARY KEY AUTOINCREMEMT,
+                      flight_id INTEGER PRIMARY KEY AUTOINCREMENT,
                       flight_number TEXT NOT NULL,
+                      seats INTEGER NOT NULL DEFAULT 60,
                       departure TEXT NOT NULL,
                       arrival TEXT NOT NULL,
                       date TEXT NOT NULL, 
@@ -29,6 +30,6 @@ def init_db():
                       flight_id INTEGER NOT NULL,
                       created_at TEXT DEFAULT (datetime('now','localtime')),
                       FOREIGN KEY(flight_id) REFERENCES flights(flight_id) ON DELETE CASCADE -- to ensure if a flight is deleted then all reservations for it are also deleted
+                    )
                   """)
         conn.commit()
-        conn.close()
