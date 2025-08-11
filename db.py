@@ -28,7 +28,7 @@ def init_db():
                       contact TEXT,
                       flight_id INTEGER NOT NULL,
                       created_at TEXT DEFAULT (datetime('now','localtime')),
-                      FOREIGN KEY(flight_id) REFERENCES flights(flight_id) ON DELETE CASCADE
-                  )
+                      FOREIGN KEY(flight_id) REFERENCES flights(flight_id) ON DELETE CASCADE -- to ensure if a flight is deleted then all reservations for it are also deleted
                   """)
         conn.commit()
+        conn.close()
